@@ -23,7 +23,6 @@ async function screenShotScrapper(url) {
     await page.waitForSelector(".joinchat__button", { visible: true });
     console.log("chat showed up");
 
-    // Scroll vertically
     await page.evaluate(() => {
         window.scrollTo(0, 300);
     });
@@ -42,7 +41,7 @@ async function screenShotScrapper(url) {
                 window.getComputedStyle(img).display !== "none"
             );
         }, { timeout: 10000 });
-        await page.screenshot({ path: "viewport.png" });
+
         await page.screenshot({ path: "fullpage.png", fullPage: true });
         await browser.close()
         console.log("Screenshots taken");
